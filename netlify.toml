@@ -1,0 +1,15 @@
+# Netlify configuration for the T.K. Thrive enterprise page.
+# Publishes the site root and wires up the serverless function that
+# powers the fit-call form (netlify/functions/fit-call.js).
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Pretty URL for the function endpoint the form posts to.
+# index.html fetches "/.netlify/functions/fit-call", which works by default;
+# this redirect just also allows "/api/fit-call" if you prefer it.
+[[redirects]]
+  from = "/api/fit-call"
+  to = "/.netlify/functions/fit-call"
+  status = 200

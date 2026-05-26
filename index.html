@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise Validation — T.K. Thrive</title>
+<meta name="description" content="Rigorous market experiments that run as a fast, self-contained lane alongside your process. Validated demand data in weeks — in a format your leadership can act on.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2A44;
+    --navy-deep:#0A1E32;
+    --orange:#E07B1F;
+    --orange-deep:#C9690F;
+    --cream:#FDF6EC;
+    --sand:#F4E4D0;
+    --peach:#F9E5D0;
+    --ink:#1A1A1A;
+    --text:#2C2C2C;
+    --muted:#6B7280;
+    --line:#E8DFD3;
+    --white:#FFFFFF;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--text);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  h1,h2,h3{font-family:var(--serif);color:var(--navy);font-weight:600;line-height:1.08;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  .eyebrow{
+    font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--orange);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(253,246,236,0.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center}
+  .logo-img{height:34px;width:auto;display:block}
+  .footer-logo-img{height:30px;width:auto;display:block}
+  .nav-right{display:flex;align-items:center;gap:24px}
+  .nav-link{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--navy);transition:color .2s}
+  .nav-link:hover{color:var(--orange)}
+  .nav-cta{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--white);background:var(--navy);
+    padding:11px 22px;border-radius:6px;transition:background .2s,transform .2s}
+  .nav-cta:hover{background:var(--orange);transform:translateY(-1px)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:96px 0 80px;background:var(--cream);overflow:hidden}
+  .hero::after{
+    content:"";position:absolute;top:-10%;right:-8%;width:560px;height:560px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(224,123,31,0.10), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(15,42,68,0.06), transparent 60%);
+    border-radius:50%;filter:blur(8px);pointer-events:none;
+  }
+  .hero-grid{position:absolute;top:64px;right:-40px;width:420px;height:420px;opacity:.9;pointer-events:none;
+    display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:14px;transform:rotate(-6deg)}
+  .hero-grid span{border-radius:4px;animation:tileIn .7s cubic-bezier(.2,.7,.3,1) backwards}
+  @keyframes tileIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+  .hero-content{position:relative;z-index:2;max-width:680px}
+  .hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:600;margin:22px 0 0}
+  .hero h1 .accent{font-style:italic;color:var(--orange);font-weight:500}
+  .hero p.sub{font-size:clamp(17px,2vw,20px);color:var(--text);max-width:560px;margin:26px 0 0;line-height:1.5}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:38px}
+  .btn-primary{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--white);background:var(--orange);
+    padding:15px 30px;border-radius:7px;transition:transform .2s,box-shadow .2s,background .2s;
+    box-shadow:0 8px 24px -8px rgba(224,123,31,.5)}
+  .btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(224,123,31,.6)}
+  .btn-ghost{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--navy);padding:15px 8px;
+    border-bottom:2px solid transparent;transition:border-color .2s}
+  .btn-ghost:hover{border-color:var(--orange)}
+  .hero-meta{margin-top:30px;font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+  .hero-meta b{color:var(--navy);font-weight:600}
+  .hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--orange)}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- TRUST BAR ---------- */
+  .trustbar{background:var(--navy);border-top:1px solid rgba(255,255,255,.08)}
+  .trustbar .wrap{display:flex;align-items:center;gap:28px;padding-top:20px;padding-bottom:20px;flex-wrap:wrap}
+  .trust-lbl{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+  .trust-logos{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .trust-item{font-family:var(--serif);font-size:17px;font-weight:600;color:#E4EAF0;letter-spacing:.01em}
+  .trust-sep{color:rgba(255,255,255,.3);font-size:14px}
+
+  /* ---------- SECTION BASE ---------- */
+  section{padding:88px 0}
+  .sec-head{max-width:680px;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(28px,3.6vw,42px);margin:14px 0 0}
+  .sec-head p{font-size:17px;color:var(--muted);margin-top:16px;line-height:1.55}
+
+  /* ---------- PROBLEM ---------- */
+  .problem{background:var(--white)}
+  .prob-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .prob-col{padding:44px 40px}
+  .prob-col.have{background:var(--cream)}
+  .prob-col.deliver{background:var(--navy);color:#DCE4EC}
+  .prob-col h3{font-size:23px;margin:6px 0 24px}
+  .prob-col.deliver h3{color:var(--white)}
+  .prob-col .lbl{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  .prob-col.have .lbl{color:var(--orange)}
+  .prob-col.deliver .lbl{color:var(--orange)}
+  .prob-item{display:flex;gap:14px;padding:13px 0;border-top:1px solid rgba(0,0,0,.07)}
+  .prob-col.deliver .prob-item{border-top:1px solid rgba(255,255,255,.12)}
+  .prob-item:first-of-type{border-top:none}
+  .prob-item .mk{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:2px}
+  .have .mk{background:rgba(224,123,31,.15);color:var(--orange-deep)}
+  .deliver .mk{background:var(--orange);color:var(--white)}
+  .prob-item .t{font-weight:600;color:var(--navy);font-size:15px}
+  .deliver .prob-item .t{color:var(--white)}
+  .prob-item .d{font-size:13.5px;color:var(--muted);margin-top:2px}
+  .deliver .prob-item .d{color:#A9B7C6}
+
+  /* ---------- LANE DIAGRAM ---------- */
+  .lanes{background:var(--white)}
+  .lane-diagram{display:flex;flex-direction:column;gap:26px;margin-top:8px}
+  .lane{border:1px solid var(--line);border-radius:14px;padding:26px 30px 24px;background:var(--white)}
+  .lane-internal{background:var(--cream)}
+  .lane-tk{background:var(--navy);border-color:var(--navy)}
+  .lane-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:8px}
+  .lane-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy)}
+  .lane-tk .lane-name{color:var(--white)}
+  .lane-time{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--muted);
+    background:rgba(0,0,0,.05);padding:5px 13px;border-radius:999px}
+  .lane-time.tk-time{color:var(--navy);background:var(--orange)}
+  .lane-track{display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  .step{display:flex;flex-direction:column;align-items:center;gap:9px;flex-shrink:0;min-width:74px;text-align:center}
+  .dotn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--sans);
+    font-size:13px;font-weight:700;background:#E4D6C4;color:#8A7A66}
+  .lane-tk .dotn{background:rgba(255,255,255,.14);color:#C9D4E0}
+  .step.goal .dotn{background:var(--navy);color:#fff;font-size:15px}
+  .step.tk-goal .dotn{background:var(--orange);color:#fff}
+  .steplbl{font-family:var(--sans);font-size:11.5px;font-weight:600;color:#6E6253;line-height:1.25;max-width:84px}
+  .lane-tk .steplbl{color:#C3CDD8}
+  .step.goal .steplbl{color:var(--navy)}
+  .step.tk-goal .steplbl{color:var(--white)}
+  .conn{flex:1 1 auto;min-width:18px;height:2px;background:#D8C7B2;margin:0 2px;margin-bottom:22px}
+  .conn.tk-conn{background:rgba(224,123,31,.55)}
+  .lane-note{font-size:13px;color:var(--muted);margin-top:18px;line-height:1.5}
+  .lane-tk .lane-note{color:#A9B7C6}
+  .lane-payoff{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .payoff-item{flex:1 1 0;min-width:160px;background:var(--cream);border:1px solid var(--line);border-radius:12px;
+    padding:22px 24px;display:flex;align-items:baseline;gap:14px}
+  .payoff-item b{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--orange);line-height:1}
+  .payoff-item span{font-size:13.5px;color:var(--text);font-weight:500;line-height:1.35}
+
+  /* ---------- CASE STUDY ---------- */
+  .case{background:var(--navy-deep);color:#D7DEE6;position:relative;overflow:hidden}
+  .case::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 85% 12%, rgba(224,123,31,.16), transparent 42%),
+    radial-gradient(circle at 8% 88%, rgba(224,123,31,.08), transparent 45%);pointer-events:none}
+  .case .wrap{position:relative;z-index:2}
+  .case .eyebrow{color:var(--orange)}
+  .case-intro{max-width:720px;margin-bottom:48px}
+  .case-intro .intro-h{color:var(--white);font-size:clamp(28px,3.8vw,42px);margin:14px 0 0}
+  .case-intro .intro-p{font-size:17px;color:#AEBBC9;margin-top:16px;line-height:1.55}
+  .flag-tag{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--orange);background:rgba(224,123,31,.12);border:1px solid rgba(224,123,31,.3);border-radius:999px;padding:7px 16px}
+  .case-h{color:var(--white);font-size:clamp(26px,3.4vw,40px);margin:18px 0 0;max-width:760px}
+  .case .lede{font-size:18px;color:#AEBBC9;max-width:700px;margin:20px 0 0;line-height:1.55}
+  .case-body{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;margin-top:48px;align-items:start}
+  .case-narr .blk{margin-bottom:30px}
+  .case-narr .blk h4{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:9px}
+  .case-narr .blk p{font-size:15.5px;color:#C3CDD8;line-height:1.6}
+  .case-narr .blk b{color:var(--white);font-weight:600}
+  .metrics{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:34px 32px}
+  .metrics .mlbl{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
+  .metric{display:flex;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(255,255,255,.1)}
+  .metric:first-of-type{border-top:none;padding-top:0}
+  .metric .big{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--orange);min-width:96px;line-height:1}
+  .metric .mt{font-size:14px;font-weight:600;color:var(--white)}
+  /* mini cases */
+  .mini-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;padding-top:44px;border-top:1px solid rgba(255,255,255,.12)}
+  .mini-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:30px 30px 26px;transition:transform .25s,border-color .25s}
+  .mini-card:hover{transform:translateY(-3px);border-color:rgba(224,123,31,.4)}
+  .mini-tag{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--orange)}
+  .mini-h{color:var(--white);font-size:20px;margin:12px 0 10px}
+  .mini-p{font-size:14px;color:#B6C2CE;line-height:1.55;margin-bottom:22px}
+  .mini-metrics{display:flex;flex-direction:column;gap:11px}
+  .mini-metrics > div{display:flex;align-items:baseline;gap:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:11px}
+  .mini-metrics > div:first-child{border-top:none;padding-top:0}
+  .mini-metrics b{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--orange);min-width:70px}
+  .mini-metrics span{font-size:12.5px;color:#9DABBA}
+  /* exec quotes */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px;padding-top:30px;border-top:1px solid rgba(255,255,255,.12)}
+  .quote{margin:0;background:rgba(224,123,31,.07);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:22px 26px}
+  .quote p{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.5;color:#EAF0F5;margin:0 0 12px}
+  .quote cite{font-family:var(--sans);font-style:normal;font-size:12.5px;font-weight:600;color:var(--orange);letter-spacing:.02em}
+  .quote-note{grid-column:1/-1;font-size:11.5px;color:#7F8E9C;font-style:italic;margin-top:-4px}
+  .metric .ms{font-size:12.5px;color:#9DABBA;font-style:italic;margin-top:2px}
+  .case-foot{margin-top:48px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);font-size:14px;color:#9DABBA;font-style:italic;max-width:760px}
+
+  /* ---------- FIT (operating model) ---------- */
+  .fit{background:var(--cream)}
+  .fit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .fit-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:30px 30px 28px;position:relative;transition:transform .25s,box-shadow .25s}
+  .fit-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(15,42,68,.3)}
+  .fit-card .ic{width:46px;height:46px;border-radius:11px;background:var(--peach);display:grid;place-items:center;margin-bottom:18px}
+  .fit-card .ic svg{width:24px;height:24px;stroke:var(--orange-deep);fill:none;stroke-width:1.8}
+  .fit-card h3{font-size:19px;margin-bottom:9px}
+  .fit-card p{font-size:14.5px;color:var(--muted);line-height:1.55}
+
+  /* ---------- METHODS strip ---------- */
+  .methods{background:var(--white)}
+  .method-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .chip{font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--navy);background:var(--cream);
+    border:1px solid var(--line);border-radius:999px;padding:9px 18px}
+  .chip b{color:var(--orange-deep);font-weight:700;margin-right:6px}
+
+  /* ---------- CREDIBILITY ---------- */
+  .cred{background:var(--navy);color:#D7DEE6}
+  .cred .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center}
+  .cred .eyebrow{color:var(--orange)}
+  .cred h2{color:var(--white);font-size:clamp(26px,3.4vw,38px);margin:14px 0 20px}
+  .cred p{font-size:16px;color:#B9C4D0;line-height:1.65;margin-bottom:16px}
+  .cred p b{color:var(--white);font-weight:600}
+  .cred-badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .cred-badge{border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:11px 18px;font-size:13.5px;font-weight:600;color:#fff;letter-spacing:.02em}
+  .cred-badge span{color:var(--orange)}
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--cream);text-align:center}
+  .cta .wrap{max-width:760px}
+  .cta h2{font-size:clamp(30px,4.4vw,48px)}
+  .cta .accent{font-style:italic;color:var(--orange);font-weight:500}
+  .cta p{font-size:18px;color:var(--text);margin:22px auto 0;max-width:580px;line-height:1.55}
+  .cta-box{margin-top:40px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:42px 40px;box-shadow:0 24px 60px -30px rgba(15,42,68,.35)}
+  .cta-box .promise{font-size:15px;color:var(--muted);margin-bottom:26px}
+  .cta-box .promise b{color:var(--navy);font-weight:600}
+  .fit-form{text-align:left}
+  .ff-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ff-field{margin-bottom:16px}
+  .ff-field label{display:block;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:6px}
+  .ff-field input,.ff-field textarea{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+    background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
+  .ff-field input:focus,.ff-field textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(224,123,31,.15);background:var(--white)}
+  .ff-field textarea{resize:vertical;min-height:84px}
+  #ff-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .ff-submit{border:none;cursor:pointer;width:100%;margin-top:4px;font-size:15px}
+  .ff-submit:disabled{opacity:.6;cursor:default}
+  .ff-status{font-size:13.5px;margin-top:14px;text-align:center;min-height:18px}
+  .ff-status.ok{color:#0E7577;font-weight:600}
+  .ff-status.err{color:#C9690F;font-weight:600}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep);color:#8FA0B2;padding:48px 0 40px;font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+  footer .logo{color:#fff;font-size:18px}
+  footer a{color:#B9C4D0}
+  footer a:hover{color:#fff}
+  footer .rt{display:flex;gap:24px;align-items:center}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .hero-grid{display:none}
+    .prob-cols{grid-template-columns:1fr}
+    .case-body{grid-template-columns:1fr;gap:36px}
+    .mini-row{grid-template-columns:1fr}
+    .quotes{grid-template-columns:1fr}
+    .cred .wrap{grid-template-columns:1fr;gap:34px}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 22px}
+    section{padding:64px 0}
+    .hero{padding:64px 0 56px}
+    .fit-grid{grid-template-columns:1fr}
+    .prob-col{padding:34px 26px}
+    .metric .big{font-size:28px;min-width:78px}
+    .nav-cta{padding:9px 16px;font-size:13px}
+    .nav-right .nav-link{display:none}
+    .nav-right{gap:0}
+    .cta-box{padding:32px 24px}
+    .ff-row{grid-template-columns:1fr;gap:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo"><img src="logo-orange.png" alt="T.K. Thrive" class="logo-img"></a>
+    <div class="nav-right">
+      <a href="#approach" class="nav-link">Approach</a>
+      <a href="#cases" class="nav-link">Our work</a>
+      <a href="#how-we-fit" class="nav-link">How we fit</a>
+      <a href="team.html" class="nav-link">Team</a>
+      <a href="#talk" class="nav-cta">Book a fit call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-grid" id="heroGrid"></div>
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="eyebrow reveal">For corporate innovation &amp; new-business teams</div>
+      <h1 class="reveal">Run the market experiments<br><span class="accent">your process isn't built for.</span></h1>
+      <p class="sub reveal">We run rigorous validation as a <b>fast, self-contained lane</b> alongside your normal process — real demand data in weeks, in a format your leadership can act on.</p>
+      <div class="hero-actions reveal">
+        <a href="#talk" class="btn-primary">Book a 30-minute fit call</a>
+        <a href="#cases" class="btn-ghost">See our work →</a>
+      </div>
+      <div class="hero-meta reveal">
+        <span><b>30 days</b> to a stat-sig decision</span><span class="dot"></span>
+        <span><b>No PII</b> collected</span><span class="dot"></span>
+        <span><b>Live in weeks</b>, not quarters</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST BAR -->
+<div class="trustbar">
+  <div class="wrap">
+    <span class="trust-lbl">Validation work trusted across</span>
+    <div class="trust-logos">
+      <span class="trust-item">Caterpillar</span>
+      <span class="trust-sep">•</span>
+      <span class="trust-item">Fortune 100 Manufacturer</span>
+      <span class="trust-sep">•</span>
+      <span class="trust-item">EdTech Leader</span>
+      <span class="trust-sep">•</span>
+      <span class="trust-item">B2B SaaS</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="approach">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Why a separate lane helps</div>
+      <h2>The realities of validating at enterprise scale</h2>
+      <p>Large organizations move carefully for good reasons. But the same rigor that protects a product launch is heavy machinery for a quick, low-stakes market test — and that mismatch is where good ideas lose time.</p>
+    </div>
+    <div class="prob-cols reveal">
+      <div class="prob-col have">
+        <div class="lbl">The familiar tension</div>
+        <h3>Built for big launches, not fast tests</h3>
+        <div class="prob-item"><span class="mk">·</span><div><div class="t">Review cycles add up</div><div class="d">Legal, brand, and IT review exist for good reason — but they weren't designed for a two-week experiment.</div></div></div>
+        <div class="prob-item"><span class="mk">·</span><div><div class="t">Market windows don't wait</div><div class="d">By the time a full process produces a signal, the opportunity you were sizing has often moved.</div></div></div>
+        <div class="prob-item"><span class="mk">·</span><div><div class="t">Opinion isn't behavior</div><div class="d">Internal surveys tell you what people think — not what the market will actually do when asked to act.</div></div></div>
+        <div class="prob-item"><span class="mk">·</span><div><div class="t">Teams are already full</div><div class="d">Standing up a test means borrowing engineering, design, and media your people don't have spare.</div></div></div>
+      </div>
+      <div class="prob-col deliver">
+        <div class="lbl">What we add</div>
+        <h3>A fast, rigorous lane beside your process</h3>
+        <div class="prob-item"><span class="mk">✓</span><div><div class="t">Live market behavior</div><div class="d">Real prospects, real funnels, real intent — captured as signal, not stated opinion.</div></div></div>
+        <div class="prob-item"><span class="mk">✓</span><div><div class="t">Statistical rigor</div><div class="d">Chi-square, p-values, confidence intervals — evidence your leadership can stand behind.</div></div></div>
+        <div class="prob-item"><span class="mk">✓</span><div><div class="t">30–45 day cycles</div><div class="d">A half-dozen experiments a year, running in parallel — speed without cutting corners.</div></div></div>
+        <div class="prob-item"><span class="mk">✓</span><div><div class="t">Run end-to-end by us</div><div class="d">We handle build and media, so your internal teams stay focused on their own roadmap.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANE DIAGRAM -->
+<section class="lanes">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:640px">
+      <div class="eyebrow">The difference, visually</div>
+      <h2>One decision. Two very different timelines.</h2>
+      <p>Your internal process is built to do things thoroughly. Ours is built to answer one question quickly — so you reach the same go/no-go in a fraction of the time.</p>
+    </div>
+
+    <div class="lane-diagram reveal">
+      <!-- Internal lane -->
+      <div class="lane lane-internal">
+        <div class="lane-head">
+          <span class="lane-name">The internal path</span>
+          <span class="lane-time">≈ 6 months</span>
+        </div>
+        <div class="lane-track">
+          <div class="step"><span class="dotn">1</span><span class="steplbl">Scope &amp; charter</span></div>
+          <div class="conn"></div>
+          <div class="step"><span class="dotn">2</span><span class="steplbl">Legal review</span></div>
+          <div class="conn"></div>
+          <div class="step"><span class="dotn">3</span><span class="steplbl">Brand approval</span></div>
+          <div class="conn"></div>
+          <div class="step"><span class="dotn">4</span><span class="steplbl">IT &amp; data sign-off</span></div>
+          <div class="conn"></div>
+          <div class="step"><span class="dotn">5</span><span class="steplbl">Build &amp; staff</span></div>
+          <div class="conn"></div>
+          <div class="step"><span class="dotn">6</span><span class="steplbl">Run &amp; analyze</span></div>
+          <div class="conn"></div>
+          <div class="step goal"><span class="dotn">★</span><span class="steplbl">Decision</span></div>
+        </div>
+        <div class="lane-note">Sequential gates, internal teams pulled in — thorough, but slow for a quick market test.</div>
+      </div>
+
+      <!-- TK lane -->
+      <div class="lane lane-tk">
+        <div class="lane-head">
+          <span class="lane-name">The T.K. Thrive lane</span>
+          <span class="lane-time tk-time">≈ 30–45 days</span>
+        </div>
+        <div class="lane-track tk-track">
+          <div class="step"><span class="dotn">1</span><span class="steplbl">Lock the hypothesis</span></div>
+          <div class="conn tk-conn"></div>
+          <div class="step"><span class="dotn">2</span><span class="steplbl">Live experiment</span></div>
+          <div class="conn tk-conn"></div>
+          <div class="step"><span class="dotn">3</span><span class="steplbl">Targeted traffic</span></div>
+          <div class="conn tk-conn"></div>
+          <div class="step goal tk-goal"><span class="dotn">★</span><span class="steplbl">Stat-sig decision</span></div>
+        </div>
+        <div class="lane-note tk-note">A self-contained lane we run end-to-end — same rigor, same defensible answer, a fraction of the calendar.</div>
+      </div>
+    </div>
+
+    <div class="lane-payoff reveal">
+      <div class="payoff-item"><b>~5×</b><span>faster to a decision</span></div>
+      <div class="payoff-item"><b>0</b><span>internal teams pulled off-roadmap</span></div>
+      <div class="payoff-item"><b>1</b><span>defensible go/no-go, dashboard included</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case" id="cases">
+  <div class="wrap">
+    <div class="case-intro reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2 class="intro-h">The same playbook, across very different markets</h2>
+      <p class="intro-p">A flagship engagement inside a Fortune 100 manufacturer — and the same rigorous, fast approach proving out in ed-tech and B2B SaaS.</p>
+    </div>
+
+    <div class="flag-tag reveal">Flagship · Caterpillar — Construction Industries Services Division</div>
+    <h3 class="case-h reveal">Validating a new aftermarket service line in 30 days</h3>
+    <p class="lede reveal">Caterpillar's Construction Industries Services Division (CISD) — the group focused on accelerating aftermarket services growth — wanted to know whether small-core operators would choose an L3 hydraulic-pump <b>repair</b> service over a Reman exchange. We ran the whole test as a self-contained lane, in parallel to their normal process.</p>
+
+    <div class="case-body">
+      <div class="case-narr reveal">
+        <div class="blk">
+          <h4>The opportunity</h4>
+          <p>A division <b>focused on growing aftermarket services</b> — looking for a way to test new service concepts at market speed, without tying up the internal review cycles built for full product launches.</p>
+        </div>
+        <div class="blk">
+          <h4>What we did</h4>
+          <p>Stood up <b>Pump Solutions Pro</b> — a fully branded concept site offering repair pricing at 15–55% of new-pump cost, with warranty, financing, and expedited-service options. Targeted real operators via a first-party data partner plus PMAX and Meta. Instrumented every step with custom GA4 events — <b>no PII collected.</b></p>
+        </div>
+        <div class="blk">
+          <h4>The outcome</h4>
+          <p>Statistically significant validation of both demand and pricing sensitivity — delivered as a final report plus a live Looker Studio dashboard. Caterpillar <b>greenlit a dealership pilot</b> on the strength of it.</p>
+        </div>
+      </div>
+
+      <div class="metrics reveal">
+        <div class="mlbl">Headline metrics</div>
+        <div class="metric"><div class="big">3.9%</div><div><div class="mt">L3 repair conversion (optimized phase)</div><div class="ms">vs. 0.6% exchange — beat the 1.5% target</div></div></div>
+        <div class="metric"><div class="big">89.9%</div><div><div class="mt">of converters chose repair over exchange</div><div class="ms">n = 139 quote requests</div></div></div>
+        <div class="metric"><div class="big">&lt;.001</div><div><div class="mt">chi-square p-value</div><div class="ms">pricing is the dominant lever, not noise</div></div></div>
+        <div class="metric"><div class="big">30</div><div><div class="mt">days to an actionable result</div><div class="ms">including a 14-day ad-platform learning phase</div></div></div>
+      </div>
+    </div>
+
+    <p class="case-foot reveal">The relationship grew within the same division — from the hydraulics initiative to Caterpillar's Building Construction Products group, one of CISD's core machinery lines.</p>
+
+    <div class="quotes reveal">
+      <blockquote class="quote">
+        <p>“The speed was the thing. We got a defensible read in weeks — work that would normally have taken us months to move through internally.”</p>
+        <cite>Global Hydraulics Growth lead, Construction Industries Services Division</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>“It gave us clean data we could actually take upstairs and act on — and a way to test ideas other teams here could use too.”</p>
+        <cite>Project sponsor, CISD aftermarket services</cite>
+      </blockquote>
+      <p class="quote-note">Paraphrased from conversations during the engagement, attributed by role.</p>
+    </div>
+
+    <!-- TWO MORE CASES -->
+    <div class="mini-row">
+      <div class="mini-card reveal">
+        <div class="mini-tag">K–5 education · EduSmart</div>
+        <h4 class="mini-h">Tuning a funnel before scaling spend</h4>
+        <p class="mini-p">Validated teacher demand for an AI-assisted, NGSS-aligned science curriculum and pinpointed exactly where the funnel leaked — before a dollar of scale-up spend.</p>
+        <div class="mini-metrics">
+          <div><b>7,885</b><span>targeted visitors</span></div>
+          <div><b>34.3%</b><span>activation — beats best-in-class PLG</span></div>
+          <div><b>~$6K</b><span>total media (vs. ~$40K w/ first-party)</span></div>
+        </div>
+      </div>
+      <div class="mini-card reveal">
+        <div class="mini-tag">B2B SaaS · VirtuDocs</div>
+        <h4 class="mini-h">From hypothesis to a validated waitlist</h4>
+        <p class="mini-p">A/B-tested two messaging angles for an AI document-management product against B2B operations leaders — and cleared the demand threshold with statistical significance.</p>
+        <div class="mini-metrics">
+          <div><b>6.0%</b><span>waitlist conversion (target: 4%)</span></div>
+          <div><b>95% CI</b><span>4.49–7.51%, clear winning variant</span></div>
+          <div><b>$12.70</b><span>blended CPL vs. $70+ benchmark</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT / OPERATING MODEL -->
+<section class="fit" id="how-we-fit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">How we fit your organization</div>
+      <h2>Designed to be the easy part</h2>
+      <p>The hard part of enterprise validation isn't the method — it's running it cleanly alongside everything else you have in motion. That's what we're built for.</p>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3>Live in weeks, not an MSA cycle</h3>
+        <p>We can run through an established agency channel — the same setup we used with Caterpillar — so there's no months-long supplier-onboarding before the first experiment goes live.</p>
+      </div>
+      <div class="fit-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>A self-contained lane</h3>
+        <p>Experiments run on our infrastructure under their own branding, in parallel to your process. Your team stays focused, and a quick test stays quick.</p>
+      </div>
+      <div class="fit-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>No PII, by design</h3>
+        <p>We capture behavioral signal only, through custom GA4 events — built to sit comfortably within the data guardrails enterprise teams already operate under.</p>
+      </div>
+      <div class="fit-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <h3>Evidence you can present upward</h3>
+        <p>Every engagement ends in a defensible go/no-go: p-values, confidence intervals, segmented breakdowns, and a live dashboard — built to be shared with leadership, not just you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS strip -->
+<section class="methods">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:30px">
+      <div class="eyebrow">The toolkit</div>
+      <h2>The experiments behind the signal</h2>
+      <p>We pick the lightest method that produces a defensible answer — and instrument all of them to statistical significance.</p>
+    </div>
+    <div class="method-row reveal">
+      <span class="chip"><b>·</b>Fake-door tests</span>
+      <span class="chip"><b>·</b>Landing-page A/B experiments</span>
+      <span class="chip"><b>·</b>Shadow-branded concept sites</span>
+      <span class="chip"><b>·</b>Pricing-sensitivity testing</span>
+      <span class="chip"><b>·</b>Simulated product demos</span>
+      <span class="chip"><b>·</b>Wizard-of-Oz validation</span>
+      <span class="chip"><b>·</b>Synthetic respondent panels</span>
+      <span class="chip"><b>·</b>Managed PMAX + Meta media</span>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="cred">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Who you'd work with</div>
+      <h2>Someone who knows how large organizations actually work</h2>
+      <div class="cred-badges">
+        <div class="cred-badge"><span>◆</span> eBay</div>
+        <div class="cred-badge"><span>◆</span> Nike</div>
+        <div class="cred-badge"><span>◆</span> Caterpillar</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p>T.K. Thrive is led by <b>Timour Khamnayev</b>, a product leader who spent years driving lean, data-driven experimentation inside large organizations — including eBay and Nike — before building the practice that Caterpillar's teams now work with.</p>
+      <p>That background is the point. We understand the realities you operate in <b>because we've operated in them</b> — the review cycles, the brand sensitivity, the pressure to move fast and get it right. The methods are rigorous; the real value is knowing how to run them <b>cleanly inside a large organization.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="talk">
+  <div class="wrap">
+    <h2 class="reveal">Let's pressure-test <span class="accent">your hardest call.</span></h2>
+    <p class="reveal">No pitch. Tell us the decision you're weighing and we'll come back within one business day — honestly whether a fast experiment fits, and if it does, a sketch of how we'd test it.</p>
+    <div class="cta-box reveal">
+      <div class="promise">You'll walk away with a <b>tailored proof-of-concept sketch</b>: the experiment design, a rough timeline, and what the go/no-go data would actually look like for your hypothesis.</div>
+      <form id="fitForm" class="fit-form" novalidate>
+        <div class="ff-row">
+          <div class="ff-field">
+            <label for="ff-name">Name</label>
+            <input id="ff-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="ff-field">
+            <label for="ff-email">Work email</label>
+            <input id="ff-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="ff-field">
+          <label for="ff-company">Company</label>
+          <input id="ff-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="ff-field">
+          <label for="ff-msg">The decision you're weighing</label>
+          <textarea id="ff-msg" name="message" rows="3" placeholder="e.g. Whether to launch a new aftermarket service tier before committing engineering…"></textarea>
+        </div>
+        <!-- honeypot (spam trap, hidden from humans) -->
+        <input type="text" name="company_website" id="ff-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn-primary ff-submit">Request a fit call</button>
+        <div class="ff-status" id="ffStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <img src="logo-white.png" alt="T.K. Thrive" class="footer-logo-img">
+    <div class="rt">
+      <a href="#approach">Approach</a>
+      <a href="#cases">Our work</a>
+      <a href="#how-we-fit">How we fit</a>
+      <a href="team.html">Team</a>
+      <a href="#talk">Book a fit call</a>
+      <a href="https://www.tkthrive.io">tkthrive.io</a>
+      <span>© 2026 T.K. Thrive LLC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Build the decorative hero grid (staggered tiles)
+  (function(){
+    var grid=document.getElementById('heroGrid');
+    if(!grid)return;
+    var palette=['#F4E4D0','#FDF6EC','#F4E4D0','#F9E5D0',
+                 '#FDF6EC','#E07B1F','#FDF6EC','#E07B1F',
+                 '#F9E5D0','#FDF6EC','#E07B1F','#FDF6EC',
+                 '#FDF6EC','#F4E4D0','#FDF6EC','#F4E4D0'];
+    palette.forEach(function(c,i){
+      var s=document.createElement('span');
+      s.style.background=c;
+      s.style.animationDelay=(i*40)+'ms';
+      grid.appendChild(s);
+    });
+  })();
+
+  // Scroll reveal
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e)});
+    // Hero reveals fire immediately on load (staggered)
+    window.addEventListener('load',function(){
+      document.querySelectorAll('.hero .reveal').forEach(function(e,i){
+        setTimeout(function(){e.classList.add('in')}, 120 + i*110);
+      });
+    });
+  })();
+
+  // Fit-call form -> serverless function (/.netlify/functions/fit-call)
+  (function(){
+    var form=document.getElementById('fitForm');
+    if(!form)return;
+    var status=document.getElementById('ffStatus');
+    var btn=form.querySelector('.ff-submit');
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      status.className='ff-status'; status.textContent='';
+      var data={
+        name:form.name.value.trim(),
+        email:form.email.value.trim(),
+        company:form.company.value.trim(),
+        message:form.message.value.trim(),
+        company_website:form.company_website.value // honeypot
+      };
+      if(!data.name||!data.email){
+        status.className='ff-status err'; status.textContent='Please add your name and work email.'; return;
+      }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){
+        status.className='ff-status err'; status.textContent='That email doesn\u2019t look right \u2014 mind checking it?'; return;
+      }
+      btn.disabled=true; var orig=btn.textContent; btn.textContent='Sending\u2026';
+      fetch('/.netlify/functions/fit-call',{
+        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+      }).then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
+        .then(function(res){
+          if(res.ok){
+            form.reset();
+            status.className='ff-status ok';
+            status.textContent='Thanks \u2014 got it. We\u2019ll reply within one business day.';
+            btn.textContent='Sent';
+          }else{
+            status.className='ff-status err';
+            status.textContent=(res.j&&res.j.error)||'Something went wrong on our end. Please try again in a moment.';
+            btn.disabled=false; btn.textContent=orig;
+          }
+        }).catch(function(){
+          status.className='ff-status err';
+          status.textContent='Network hiccup — please try again in a moment.';
+          btn.disabled=false; btn.textContent=orig;
+        });
+    });
+  })();
+</script>
+</body>
+</html>

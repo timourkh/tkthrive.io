@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team — T.K. Thrive</title>
+<meta name="description" content="The team behind T.K. Thrive — product, technology, design, and data leaders who have driven experimentation inside large organizations and startups alike.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2A44;--navy-deep:#0A1E32;--orange:#E07B1F;--orange-deep:#C9690F;
+    --cream:#FDF6EC;--sand:#F4E4D0;--peach:#F9E5D0;--ink:#1A1A1A;--text:#2C2C2C;
+    --muted:#6B7280;--line:#E8DFD3;--white:#FFFFFF;
+    --serif:"Fraunces",Georgia,serif;--sans:"Inter",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  h1,h2,h3{font-family:var(--serif);color:var(--navy);font-weight:600;line-height:1.1;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(253,246,236,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center}
+  .logo-img{height:34px;width:auto;display:block}
+  .nav-right{display:flex;align-items:center;gap:24px}
+  .nav-link{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--navy);transition:color .2s}
+  .nav-link:hover{color:var(--orange)}
+  .nav-link.active{color:var(--orange)}
+  .nav-cta{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--white);background:var(--navy);padding:11px 22px;border-radius:6px;transition:background .2s,transform .2s}
+  .nav-cta:hover{background:var(--orange);transform:translateY(-1px)}
+
+  /* HEADER */
+  .team-hero{background:var(--cream);padding:80px 0 64px;position:relative;overflow:hidden}
+  .team-hero::after{content:"";position:absolute;top:-15%;right:-6%;width:460px;height:460px;
+    background:radial-gradient(circle at 35% 35%,rgba(224,123,31,.10),transparent 60%);border-radius:50%;pointer-events:none}
+  .team-hero .wrap{position:relative;z-index:2;max-width:760px}
+  .team-hero h1{font-size:clamp(36px,5vw,56px);margin:18px 0 0}
+  .team-hero p{font-size:18px;color:var(--text);margin-top:22px;line-height:1.55;max-width:620px}
+
+  /* TEAM LIST */
+  .team{padding:80px 0}
+  .member{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:start;padding:44px 0;border-top:1px solid var(--line)}
+  .member:first-child{border-top:none;padding-top:0}
+  .avatar{width:200px;height:200px;border-radius:14px;background:linear-gradient(145deg,var(--sand),var(--peach));
+    display:grid;place-items:center;overflow:hidden;border:1px solid var(--line)}
+  .avatar span{font-family:var(--serif);font-size:52px;font-weight:600;color:var(--orange-deep);opacity:.85}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .m-body .role{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+  .m-body h3{font-size:27px;margin:8px 0 16px}
+  .m-body p{font-size:15.5px;color:var(--text);line-height:1.65;max-width:620px}
+
+  /* CTA STRIP */
+  .cta-strip{background:var(--navy);color:#D7DEE6;padding:64px 0;text-align:center}
+  .cta-strip h2{color:var(--white);font-size:clamp(26px,3.4vw,38px)}
+  .cta-strip .accent{font-style:italic;color:var(--orange);font-weight:500}
+  .cta-strip p{font-size:16px;color:#AEBBC9;margin:16px auto 28px;max-width:520px}
+  .btn-primary{display:inline-block;font-family:var(--sans);font-size:15px;font-weight:600;color:var(--white);background:var(--orange);
+    padding:15px 30px;border-radius:7px;transition:transform .2s,background .2s;box-shadow:0 8px 24px -8px rgba(224,123,31,.5)}
+  .btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px)}
+
+  /* FOOTER */
+  footer{background:var(--navy-deep);color:#8FA0B2;padding:48px 0 40px;font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+  .footer-logo-img{height:30px;width:auto;display:block}
+  footer a{color:#B9C4D0}
+  footer a:hover{color:#fff}
+  footer .rt{display:flex;gap:24px;align-items:center}
+
+  @media(max-width:720px){
+    .member{grid-template-columns:1fr;gap:20px}
+    .avatar{width:120px;height:120px}
+    .avatar span{font-size:34px}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 22px}
+    .nav-right{gap:16px}
+    .nav-right .nav-link{display:none}
+    .nav-cta{padding:9px 16px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo"><img src="logo-orange.png" alt="T.K. Thrive" class="logo-img"></a>
+    <div class="nav-right">
+      <a href="index.html#approach" class="nav-link">Approach</a>
+      <a href="index.html#cases" class="nav-link">Our work</a>
+      <a href="index.html#how-we-fit" class="nav-link">How we fit</a>
+      <a href="team.html" class="nav-link active">Team</a>
+      <a href="index.html#talk" class="nav-cta">Book a fit call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="team-hero">
+  <div class="wrap">
+    <div class="eyebrow">About us</div>
+    <h1>The people behind the work</h1>
+    <p>A small, senior team that has driven lean, data-driven experimentation inside large organizations and startups alike — and now brings that discipline to validation work for our clients.</p>
+  </div>
+</header>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="wrap">
+
+    <div class="member">
+      <div class="avatar"><img src="Timour.webp" alt="Timour Khamnayev"></div>
+      <div class="m-body">
+        <div class="role">Founder</div>
+        <h3>Timour Khamnayev</h3>
+        <p>Drawing on experience at corporate leaders like eBay and Nike, as well as multiple startups, Timour built his product-management craft to be both data-driven and visionary. Leveraging lean methodologies, he has led app redesigns, pioneered ML-enhanced platforms, and managed strategic integrations that culminated in successful acquisitions.</p>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="avatar"><img src="Vikas.webp" alt="Vikas Agarwal"></div>
+      <div class="m-body">
+        <div class="role">Technology &amp; Partnerships</div>
+        <h3>Vikas Agarwal</h3>
+        <p>Vikas is a seasoned technologist, growth evangelist, AI enthusiast, and product evangelist with more than 20 years of experience in technology-led startups. He brings broad cross-industry depth — spanning education, IT, chemical, and textile — and global exposure across North America, the Middle East, Asia, and Europe.</p>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="avatar"><img src="Dmitriy.webp" alt="Dmitriy Bagrov"></div>
+      <div class="m-body">
+        <div class="role">UX Lead</div>
+        <h3>Dmitriy Bagrov</h3>
+        <p>With 15 years of immersive experience in user-experience design, Dmitriy has honed an exceptional ability to merge functionality with aesthetics. Over a decade and a half he has led cross-functional teams, driven user-centric design philosophies, and consistently delivered intuitive, engaging digital experiences — placing the user's journey at the heart of every design decision.</p>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="avatar"><img src="Michael.webp" alt="Michael Walpole"></div>
+      <div class="m-body">
+        <div class="role">Data Scientist</div>
+        <h3>Michael Walpole</h3>
+        <p>With a distinctive background spanning mathematics and psychometric analysis underpinned by 20 years of experience, Michael has developed deep expertise in transforming intricate data into actionable insight. His psychometrics background gives him a unique lens for interpreting complex patterns and behaviors — enabling predictive models and analytics solutions that resonate on both a numerical and a human level.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Let's pressure-test <span class="accent">your hardest call.</span></h2>
+    <p>Tell us the decision you're weighing and we'll come back within one business day.</p>
+    <a href="index.html#talk" class="btn-primary">Book a 30-minute fit call</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <img src="logo-white.png" alt="T.K. Thrive" class="footer-logo-img">
+    <div class="rt">
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#cases">Our work</a>
+      <a href="index.html#how-we-fit">How we fit</a>
+      <a href="team.html">Team</a>
+      <a href="index.html#talk">Book a fit call</a>
+      <a href="https://www.tkthrive.io">tkthrive.io</a>
+      <span>© 2026 T.K. Thrive LLC</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
